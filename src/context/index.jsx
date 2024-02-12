@@ -1,10 +1,15 @@
 'use client';
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
 const JobContext = createContext();
 
 const JobContextProvider = ({ children }) => {
-  const contextValue = {};
+  const [recentJobs, setRecentJobs] = useState([]);
+
+  const contextValue = {
+    recentJobs,
+    setRecentJobs,
+  };
   return <JobContext.Provider value={contextValue}>{children}</JobContext.Provider>;
 };
 

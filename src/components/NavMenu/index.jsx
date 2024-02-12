@@ -4,7 +4,7 @@ import HomePage from "../HomePage"
 function NavMenu() {
     return (
         <>
-            <nav className="">
+            <nav>
                 <a href="#">JobSearch</a>
                 <span>
                     <a href="#">All Jobs</a>

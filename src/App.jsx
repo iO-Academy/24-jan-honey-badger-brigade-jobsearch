@@ -1,11 +1,11 @@
-import { JobContext } from './context';
+import { JobContextProvider } from './context';
 
 function App() {
   return (
     <>
-      <JobContext.Provider>
-        <div>Main</div>
-      </JobContext.Provider>
+      <JobContextProvider>
+        <div>Home</div>
+      </JobContextProvider>
     </>
   );
 }

@@ -1,5 +1,6 @@
 function RecentJobs() {
 
+
     return (
         <section className="w-full font-sans items-center justify-center mx-auto overflow-hidden px-10 max-w-screen-md">
             <div className="flex flex-row justify-center">
@@ -30,5 +31,10 @@ function RecentJobs() {
         </section>
     )
 
-    }
+    
+
+    
+}
+
+
 export default RecentJobs

@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <JobContextProvider>
-        <div>Home</div>
+        <div></div>
       </JobContextProvider>
     </>
   );

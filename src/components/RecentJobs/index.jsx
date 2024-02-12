@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import JobCard from '../JobCard';
+import { JobContext } from '../../context';
 
 function RecentJobs() {
+  const { recentJobs } = useContext(JobContext);
+  console.log(recentJobs);
   return (
-    <section className='font-sans items-center justify-center mx-auto overflow-hidden px-10 max-w-screen-md' style={{ minWidth: '750px' }}>
-      <div className='flex flex-row justify-center py-3'>
+    <section className='font-sans items-center justify-center mx-auto overflow-hidden px-10 max-w-screen-md' style={{ minWidth: '950px' }}>
+      <div className='flex flex-row justify-center items-center py-3'>
         <h3 className='flex justify-start font-bold text-3xl'>Most Recent Jobs</h3>
         <a className='flex ml-auto font-semibold text-blue-600' href='#'>
           View all jobs &#8594;
@@ -13,8 +17,8 @@ function RecentJobs() {
       <div>
         <table className='w-full bg-zinc-700'>
           <thead>
-            <tr className='flex justify-between px-2 mr-10'>
-              <th>Job Title / Company</th>
+            <tr className='flex justify-between px-3 mr-16'>
+              <th style={{ minWidth: '350px' }}>Job Title / Company</th>
               <th className='ml-5 '>Type</th>
               <th className='ml-5'>Salary</th>
               <th>Skills</th>
@@ -22,11 +26,11 @@ function RecentJobs() {
           </thead>
 
           <tbody>
-            <tr className='flex flex-col' style={{ width: '100%' }}>
-              <JobCard salary={`${5000}`} type={'Full-time'} title={'Soft Dev'} company={'Google'} logo={'/src/assets/Red_square.png'} skills={'PHP'} />
-              <JobCard salary={`${5000}`} type={'Full-time'} title={'Soft Dev'} company={'Google'} logo={'/src/assets/Red_square.png'} skills={'PHP'} />
-              <JobCard salary={`${5000}`} type={'Full-time'} title={'Soft Dev'} company={'Google'} logo={'/src/assets/Red_square.png'} skills={'PHP'} />
-            </tr>
+            {recentJobs.map((job) => (
+              <tr key={job.id} className='flex flex-col' style={{ width: '100%' }}>
+                <JobCard salary={job.salary != null ? job.salary : ' -'} type={job.type != null ? job.type : 'N/A'} title={job.job_title} company={job.company} logo={job.logo} skills={'php'} />
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

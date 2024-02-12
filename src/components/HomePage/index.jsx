@@ -1,22 +1,19 @@
-import NavMenu from "../NavMenu"
-import RecentJobs from "../RecentJobs"
-import SearchArea from "../SearchArea"
-import BrowseSkills from "../BrowseSkills"
-import RecentCompanies from "../RecentCompanies"
-
+import NavMenu from '../NavMenu';
+import RecentJobs from '../RecentJobs';
+import SearchArea from '../SearchArea';
 
 function HomePage() {
-    return (
-        <>
-            <NavMenu />
-            <SearchArea />
-            <RecentJobs />
-            {/* <BrowseSkills /> */}
-            {/* <RecentCompanies /> */}
+  return (
+    <>
+      <NavMenu />
+      <SearchArea />
+      <RecentJobs />
+      {/* <BrowseSkills /> */}
+      {/* <RecentCompanies /> */}
 
-            <footer>© Copyright iO Academy 2022</footer>
-        </>
-    )
+      <footer>© Copyright iO Academy 2022</footer>
+    </>
+  );
 }
 
-export default HomePage
+export default HomePage;

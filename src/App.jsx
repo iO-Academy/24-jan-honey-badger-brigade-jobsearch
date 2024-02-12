@@ -1,26 +1,15 @@
-
-import JobCard from './components/JobCard';
-import { JobContext } from './context';
-
-
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
-import HomePage from './components/HomePage'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './components/HomePage';
 import RecentJobs from './components/RecentJobs';
 import SearchArea from './components/SearchArea';
 
 import { JobContextProvider } from './context';
 
-
-
 function App() {
   return (
     <>
-
-
       <JobContextProvider>
-
         <div>Main</div>
-
 
         <BrowserRouter>
           <Routes>
@@ -30,9 +19,7 @@ function App() {
             <Route path='/jobs/recent' element={<RecentJobs />} />
           </Routes>
         </BrowserRouter>
-
       </JobContextProvider>
-
     </>
   );
 }

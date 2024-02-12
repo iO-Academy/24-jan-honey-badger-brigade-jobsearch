@@ -1,14 +1,18 @@
-import { JobContext } from './context';
+
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import HomePage from './components/HomePage'
 import RecentJobs from './components/RecentJobs';
 import SearchArea from './components/SearchArea';
 
+import { JobContextProvider } from './context';
+
+
 function App() {
   return (
     <>
 
-      <JobContext.Provider>
+
+      <JobContextProvider>
 
         <div>Main</div>
 
@@ -21,7 +25,8 @@ function App() {
           </Routes>
         </BrowserRouter>
 
-      </JobContext.Provider>
+      </JobContextProvider>
+
 
     </>
   );

@@ -41,9 +41,11 @@ const JobModal = () => {
             <div>
               <div>Skills</div>
               <div className='flex flex-row gap-1'>
-                <p>php</p>
-                <p>react</p>
-                <p>JavaScript</p>
+                {job.skills.map((skill) => (
+                  <span key={skill.id} className='bg-blue-500 text-white p-1 rounded-lg'>
+                    {skill.skill}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

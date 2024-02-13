@@ -4,10 +4,9 @@ import { JobContext } from '../../context';
 const JobModal = () => {
   const { recentJobs } = useContext(JobContext);
   const job = recentJobs[0];
-  console.log(job);
   return (
     <div className='Modal-container px-2 border-2 border-slate-400'>
-      <div className='flex my-4 border-slate-400 border-b-2 pb-2'>
+      <div className='flex my-4 ml-2 border-slate-200 border-b-2 pb-4'>
         <div className='flex flex-row gap-2'>
           <h2>{`${job.job_title} -`}</h2>
           <h2>{job.company}</h2>
@@ -26,19 +25,19 @@ const JobModal = () => {
           </div>
           <div className='font-semibold'>Key facts: </div>
           <div className='facts flex flex-row gap-12'>
-            <div>
+            <div className='flex flex-col gap-1'>
               <div>Salary:</div>
               <div>{`$${job.salary}`}</div>
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <div>Type: </div>
               <div>Full time</div>
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <div>Data posted: </div>
               <div>{'2024.05.25'}</div>
             </div>
-            <div>
+            <div className='flex flex-col gap-1'>
               <div>Skills</div>
               <div className='flex flex-row gap-1'>
                 {job.skills.map((skill) => (
@@ -63,12 +62,23 @@ const JobModal = () => {
             voluptatum quibusdam quis iure, iste quia atque sint mollitia nostrum eos fugit! Recusandae nemo doloremque nam non illo.
           </p>
         </div>
-        <div className='flex mt-3 items-center'>
+        <div className='flex mt-6 items-center'>
           <button className='bg-green-600 text-white p-2 rounded-lg'>Apply Now</button>
           <button className='ml-auto rounded-lg border-2 p-1 border-zinc-400 text-zinc-400'>Save for later</button>
         </div>
       </div>
-      <div>Similar jobs</div>
+      <div className='mt-8 mx-10'>
+        <h1 className='text-4xl font-bold mb-4'>Similar Jobs</h1>
+      </div>
+      <div className='flex flex row border w-1/4 mx-10 bg-zinc-500 mb-4'>
+        <div className='flex gap-2 items-center p-2'>
+              <img src={job.logo} alt='company logo' width={100} />
+        </div>
+            <div className='flex flex-col pt-2 text-white w-1/2 '>
+            <h2 className='font-bold text-l mb-2'>{job.job_title}</h2>
+            <h2 className='font-bold text-l'>{job.company}</h2>
+          </div>
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from 'react';
 
 const JobContext = createContext();
 
-const JobContextProvider = ({ children }) => {
+function JobContextProvider ({children}) {
   const [recentJobs, setRecentJobs] = useState([]); // state to store the last 10 jobs
 
   //function to get the recent jobs

@@ -10,8 +10,9 @@ function App() {
   return (
     <div className="font-sans font-normal text-base bg-slate-50">
       <JobContextProvider>
-        <NavMenu />
+       
         <BrowserRouter>
+          <NavMenu />
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/jobs' element={<SearchArea />} />
@@ -20,6 +21,11 @@ function App() {
           </Routes>
         </BrowserRouter>
       </JobContextProvider>
+      <footer className='bg-white text-sm'>
+        <div className="p-2.5 mx-auto w-full md:max-w-screen-md">
+        © Copyright iO Academy 2022
+        </div>
+      </footer>
     </div>
   );
 }

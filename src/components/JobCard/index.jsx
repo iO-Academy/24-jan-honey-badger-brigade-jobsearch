@@ -10,7 +10,7 @@ function JobCard({ salary, type, title, company, logo, skills }) {
           </div>
         </div>
         <div className='w-[15%]'>
-          <span className='bg-blue-500 rounded-xl p-1 text-sm text-white'>{type}</span>
+          <span className='font-semibold text-sm text-white px-1.5 py-0.5 bg-blue-500 rounded-lg'>{type}</span>
         </div>
         <p className='text-base text-white w-[15%]'>{`£${salary}`}</p>
         <span className='flex gap-2 items-center justify-start w-[25%] flex-wrap'>{skills}</span>

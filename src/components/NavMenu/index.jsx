@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function NavMenu() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -30,10 +31,10 @@ function NavMenu() {
               : 'hidden lg:static lg:flex lg:flex-row lg:basis-3/4'
           }>
           <div className='flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-center lg:basis-2/3'>
-            <a href='#'>All Jobs</a>
-            <a href='#'>Full time</a>
-            <a href='#'>Part time</a>
-            <a href='#'>Contract</a>
+            <NavLink to='#'>All Jobs</NavLink>
+            <NavLink to='#'>Full time</NavLink>
+            <NavLink to='#'>Part time</NavLink>
+            <NavLink to='#'>Contract</NavLink>
           </div>
           <div className='my-2 lg:basis-1/3 lg:flex lg:justify-end'>
             <a href='#' className='border border-green-600 rounded-md p-1 text-green-600 '>

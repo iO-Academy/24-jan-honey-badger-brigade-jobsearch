@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from 'react';
 
 const JobContext = createContext();
 
+<<<<<<< HEAD
 const JobContextProvider = ({ children }) => {
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState('developer');
@@ -22,6 +23,46 @@ const JobContextProvider = ({ children }) => {
     jobs,
     setJobs,
   };
+=======
+function JobContextProvider ({children}) {
+  const [recentJobs, setRecentJobs] = useState([]); // state to store the last 10 jobs
+
+  //function to get the recent jobs
+  const getRecentJobs = async () => {
+    //try catch block to handle the fetch request
+    try {
+      //we store the response from the fetch request in a variable called response
+      const response = await fetch('https://job-search-api.dev.io-academy.uk/jobs/recent');
+
+      //we store the data from the response in a variable called data
+
+      const data = await response.json(); //we convert the response to json
+      //if there is no data we log 'no data' to the console
+      if (!data) {
+        console.log('no data');
+      } else {
+        //if there is data we set the recent jobs to the data
+        setRecentJobs(data);
+      }
+    } catch (error) {
+      //if there is an error we log the error to the console
+      console.error('Failed to fetch recent jobs', error);
+    }
+  };
+  //useEffect hook to call the getRecentJobs function when the component mounts
+  useEffect(() => {
+    getRecentJobs();
+  }, []);
+
+  const contextValue = {
+    //we export the recentJobs and setRecentJobs state
+    recentJobs,
+    setRecentJobs,
+  };
+
+  //we wrap the children in the JobContext.Provider and pass the contextValue to the value prop
+
+>>>>>>> f6e7f472b0a7ec4fb8c68766a685ae82ee554c7f
   return <JobContext.Provider value={contextValue}>{children}</JobContext.Provider>;
 };
 

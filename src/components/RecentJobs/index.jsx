@@ -16,25 +16,30 @@ function RecentJobs() {
       </div>
 
       <div>
-        <table className='w-full bg-zinc-700'>
-          <thead>
-            <tr className='flex justify-between px-3 text-white'>
-              <th className='text-left w-[45%]'>Job Title / Company</th>
-              <th className='flex justify-start w-[15%]'>Type</th>
-              <th className='flex justify-start w-[15%]'>Salary</th>
-              <th className='flex justify-start w-[25%]'>Skills</th>
-            </tr>
-          </thead>
+        <div className='w-full bg-zinc-700'>
+          <div>
+            <div className='flex justify-between px-3 text-white'>
+              <div className='text-left w-[45%]'>Job Title / Company</div>
+              <div className='flex justify-start w-[15%]'>Type</div>
+              <div className='flex justify-start w-[15%]'>Salary</div>
+              <div className='flex justify-start w-[25%]'>Skills</div>
+            </div>
+          </div>
 
-          <tbody>
-            {recentJobs.map(job => (
-              <tr key={job.id} className='flex flex-col even:bg-zinc-700 odd:bg-zinc-500' style={{ width: '100%' }}>
-                <JobCard salary={job.salary != null ? job.salary : ' -'} type={job.type != null ? job.type : 'N/A'} title={job.job_title} company={job.company} logo={job.logo} skills={<SkillsItem skills={job.skills} />} />
-
-              </tr>
+          <div>
+            {recentJobs.map((job) => (
+              <JobCard
+                key={job.id}
+                salary={job.salary != null ? job.salary : ' -'}
+                type={job.type != null ? job.type : 'N/A'}
+                title={job.job_title}
+                company={job.company}
+                logo={job.logo}
+                skills={<SkillsItem skills={job.skills} />}
+              />
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     </section>
   );

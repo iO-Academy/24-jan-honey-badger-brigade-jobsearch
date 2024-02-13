@@ -8,12 +8,11 @@ const JobContextProvider = ({ children }) => {
 
   //function to get the recent jobs
   const getRecentJobs = async () => {
-
     //try catch block to handle the fetch request
     try {
       //we store the response from the fetch request in a variable called response
       const response = await fetch('https://job-search-api.dev.io-academy.uk/jobs/recent');
-      
+
       //we store the data from the response in a variable called data
 
       const data = await response.json(); //we convert the response to json
@@ -27,16 +26,11 @@ const JobContextProvider = ({ children }) => {
     } catch (error) {
       //if there is an error we log the error to the console
       console.error('Failed to fetch recent jobs', error);
-
     }
   };
   //useEffect hook to call the getRecentJobs function when the component mounts
   useEffect(() => {
-
     getRecentJobs();
-
-    
-
   }, []);
 
   const contextValue = {

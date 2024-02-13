@@ -1,6 +1,6 @@
 function JobCard({ salary, type, title, company, logo, skills }) {
   return (
-    <div className='flex py-5 px-2 justify-between items-start bg-zinc-700 odd:bg-zinc-500'>
+    <div className='flex py-5 px-2 justify-between items-start'>
       <div className='flex gap-1 items-start' style={{ minWidth: '350px' }}>
         <img className='h-20 w-20' src={logo} />
         <div className='flex flex-col'>

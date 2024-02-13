@@ -1,17 +1,20 @@
 import { useContext } from 'react';
 import { JobContext } from '../../context';
 
-const JobModal = () => {
+const JobModal = ({ toggle }) => {
   const { recentJobs } = useContext(JobContext);
   const job = recentJobs[0];
+
   return (
-    <div className='Modal-container px-2 border-2 border-slate-400'>
+    <div className={`Modal-container px-2 border-2 border-slate-400 z-10 absolute bg-white  m-auto left-0 right-0 w-[50%]`}>
       <div className='flex my-4 ml-2 border-slate-200 border-b-2 pb-4'>
         <div className='flex flex-row gap-2'>
           <h2>{`${job.job_title} -`}</h2>
           <h2>{job.company}</h2>
         </div>
-        <button className='ml-auto'>X</button>
+        <button onClick={toggle} className='ml-auto'>
+          X
+        </button>
       </div>
       <div className='logo-company text-white bg-blue-500 flex flex-row gap-3 items-center pl-5 mx-2' style={{ height: '100px' }}>
         <h1 className='font-semibold text-lg'>Junior Software Engineer</h1>
@@ -70,14 +73,14 @@ const JobModal = () => {
       <div className='mt-8 mx-10'>
         <h1 className='text-4xl font-bold mb-4'>Similar Jobs</h1>
       </div>
-      <div className='flex flex row border w-1/4 mx-10 bg-zinc-500 mb-4'>
+      <div className='flex flex-row border w-1/4 mx-10 bg-zinc-500 mb-4'>
         <div className='flex gap-2 items-center p-2'>
-              <img src={job.logo} alt='company logo' width={100} />
+          <img src={job.logo} alt='company logo' width={100} />
         </div>
-            <div className='flex flex-col pt-2 text-white w-1/2 '>
-            <h2 className='font-bold text-l mb-2'>{job.job_title}</h2>
-            <h2 className='font-bold text-l'>{job.company}</h2>
-          </div>
+        <div className='flex flex-col pt-2 text-white w-1/2 '>
+          <h2 className='font-bold text-l mb-2'>{job.job_title}</h2>
+          <h2 className='font-bold text-l'>{job.company}</h2>
+        </div>
       </div>
     </div>
   );

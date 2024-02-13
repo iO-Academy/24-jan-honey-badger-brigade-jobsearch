@@ -4,13 +4,11 @@ import RecentJobs from './components/RecentJobs';
 import SearchArea from './components/SearchArea';
 
 import { JobContextProvider } from './context';
-import JobModal from './components/Modal';
 
 function App() {
   return (
     <div className='font-sans font-normal text-base bg-slate-50'>
       <JobContextProvider>
-        <JobModal />
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<HomePage />} />

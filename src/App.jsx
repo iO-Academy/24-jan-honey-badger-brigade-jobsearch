@@ -7,10 +7,10 @@ import { JobContextProvider } from './context';
 
 function App() {
   return (
-    <>
+    <div className="font-sans font-normal text-base bg-slate-50">
       <JobContextProvider>
         <div>Main</div>
-
+        
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<HomePage />} />
@@ -20,7 +20,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </JobContextProvider>
-    </>
+    </div>
   );
 }
 

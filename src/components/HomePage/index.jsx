@@ -11,7 +11,11 @@ function HomePage() {
       {/* <BrowseSkills /> */}
       {/* <RecentCompanies /> */}
 
-      <footer>© Copyright iO Academy 2022</footer>
+      <footer className='bg-white text-sm'>
+        <div className="p-2.5 mx-auto w-full xl:max-w-screen-xl">
+        © Copyright iO Academy 2022
+        </div>
+      </footer>
     </>
   );
 }

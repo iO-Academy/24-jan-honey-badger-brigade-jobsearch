@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.borderStyle {
+  @apply border-2 border-gray-300;
+}

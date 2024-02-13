@@ -4,13 +4,13 @@ import RecentJobs from './components/RecentJobs';
 import SearchArea from './components/SearchArea';
 
 import { JobContextProvider } from './context';
+import NavMenu from './components/NavMenu';
 
 function App() {
   return (
     <div className="font-sans font-normal text-base bg-slate-50">
       <JobContextProvider>
-        <div>Main</div>
-        
+        <NavMenu />
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<HomePage />} />

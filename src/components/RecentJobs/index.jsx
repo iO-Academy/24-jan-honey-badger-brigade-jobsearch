@@ -6,7 +6,7 @@ import JobModal from '../Modal';
 function RecentJobs() {
   const { recentJobs } = useContext(JobContext);
   console.log(recentJobs);
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -21,26 +21,26 @@ function RecentJobs() {
       </div>
       {modal && <JobModal toggle={toggleModal} />}
       <div>
-        <table className='w-full bg-zinc-700'>
-          <thead>
-            <tr className='flex justify-between px-3 mr-16 text-white'>
-              <th style={{ minWidth: '350px' }} className='text-left'>
+        <div className='w-full bg-zinc-700'>
+          <div>
+            <div className='flex justify-between px-3 mr-16 text-white'>
+              <div style={{ minWidth: '350px' }} className='text-left'>
                 Job Title / Company
-              </th>
-              <th className='pl-1'>Type</th>
-              <th className='pl-3'>Salary</th>
-              <th className='pl-2'>Skills</th>
-            </tr>
-          </thead>
+              </div>
+              <div className='pl-1'>Type</div>
+              <div className='pl-3'>Salary</div>
+              <div className='pl-2'>Skills</div>
+            </div>
+          </div>
 
-          <tbody>
+          <div>
             {recentJobs.map((job) => (
-              <tr onClick={toggleModal} key={job.id} className='flex flex-col even:bg-zinc-700 odd:bg-zinc-500' style={{ width: '100%' }}>
+              <div onClick={toggleModal} key={job.id} className='flex flex-col even:bg-zinc-700 odd:bg-zinc-500' style={{ width: '100%' }}>
                 <JobCard salary={job.salary != null ? job.salary : ' -'} type={job.type != null ? job.type : 'N/A'} title={job.job_title} company={job.company} logo={job.logo} skills={'php'} />
-              </tr>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     </section>
   );

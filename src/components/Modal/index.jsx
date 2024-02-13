@@ -6,7 +6,7 @@ const JobModal = ({ toggle }) => {
   const job = recentJobs[0];
 
   return (
-    <div className={`Modal-container px-2 border-2 border-slate-400 z-10 absolute bg-white  m-auto left-0 right-0 w-[50%]`}>
+    <div className={`Modal-container px-2 border-2 border-slate-400 z-10 fixed my-5 bg-white  left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2`}>
       <div className='flex my-4 ml-2 border-slate-200 border-b-2 pb-4'>
         <div className='flex flex-row gap-2'>
           <h2>{`${job.job_title} -`}</h2>

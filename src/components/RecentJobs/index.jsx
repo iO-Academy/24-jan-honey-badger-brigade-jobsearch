@@ -18,11 +18,11 @@ function RecentJobs() {
       <div>
         <table className='w-full bg-zinc-700'>
           <thead>
-            <tr className='flex justify-between px-3 mr-16 text-white'>
-              <th style={{ minWidth: '350px' }} className='text-left'>Job Title / Company</th>
-              <th className='pl-1'>Type</th>
-              <th className='pl-3'>Salary</th>
-              <th className='pl-2'>Skills</th>
+            <tr className='flex justify-between px-3 text-white'>
+              <th className='text-left w-[45%]'>Job Title / Company</th>
+              <th className='flex justify-start w-[15%]'>Type</th>
+              <th className='flex justify-start w-[15%]'>Salary</th>
+              <th className='flex justify-start w-[25%]'>Skills</th>
             </tr>
           </thead>
 
@@ -30,6 +30,7 @@ function RecentJobs() {
             {recentJobs.map(job => (
               <tr key={job.id} className='flex flex-col even:bg-zinc-700 odd:bg-zinc-500' style={{ width: '100%' }}>
                 <JobCard salary={job.salary != null ? job.salary : ' -'} type={job.type != null ? job.type : 'N/A'} title={job.job_title} company={job.company} logo={job.logo} skills={<SkillsItem skills={job.skills} />} />
+
               </tr>
             ))}
           </tbody>
@@ -38,5 +39,4 @@ function RecentJobs() {
     </section>
   );
 }
-
 export default RecentJobs;

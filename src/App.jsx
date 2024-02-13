@@ -19,7 +19,7 @@ function App() {
 
       <JobContextProvider>
 
-        <div>Main</div>
+      
 
 
         <BrowserRouter>

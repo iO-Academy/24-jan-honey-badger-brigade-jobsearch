@@ -1,3 +1,5 @@
+import JobCard from "../JobCard"
+
 function RecentJobs() {
 
 
@@ -19,10 +21,23 @@ function RecentJobs() {
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody className="w-full">
                     <tr>
-
+                    <JobCard type={"Full time"} salary={1000} skills={"React"} company={"Google"} logo={"/src/assets/Red_square.png"} title={"Junior Developer"}/>
                     </tr>
+
+                    <tr>
+                    <JobCard type={"Full time"} salary={1000} skills={"React"} company={"Google"} logo={"/src/assets/Red_square.png"} title={"Junior Developer"}/>
+                    </tr>
+
+                    <tr>
+                    <JobCard type={"Full time"} salary={1000} skills={"React"} company={"Google"} logo={"/src/assets/Red_square.png"} title={"Junior Developer"}/>
+                    </tr>
+
+                    <tr>
+                    <JobCard type={"Full time"} salary={1000} skills={"React"} company={"Google"} logo={"/src/assets/Red_square.png"} title={"Junior Developer"}/>
+                    </tr>
+
                 </tbody>
 
             </table>

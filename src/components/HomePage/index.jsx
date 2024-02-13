@@ -5,7 +5,6 @@ import SearchArea from '../SearchArea';
 function HomePage() {
   return (
     <>
-      <NavMenu />
       <SearchArea />
       <RecentJobs />
       {/* <BrowseSkills /> */}

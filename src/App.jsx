@@ -5,7 +5,6 @@ import { JobContextProvider } from './context';
 import modalContext from './context/modalContext';
 import NavMenu from './components/NavMenu';
 import SearchResults from './components/SearchResults';
-import modalContext from './context/modalContext';
 import { useState } from 'react';
 
 
@@ -21,7 +20,7 @@ function App() {
   return (
     <div className='font-sans font-normal text-base bg-slate-50'>
       <JobContextProvider>
-        <modalContext.Provider value={ {modal: modal, toggleModal: toggleModal, modalID: modalID,} }>
+        <modalContext.Provider value={{ modal: modal, toggleModal: toggleModal, modalID: modalID, }}>
           <BrowserRouter>
             <NavMenu />
             <Routes>

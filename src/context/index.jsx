@@ -3,9 +3,30 @@ import { createContext, useEffect, useState } from 'react';
 
 const JobContext = createContext();
 
-function JobContextProvider ({children}) {
+function JobContextProvider({ children }) {
   const [recentJobs, setRecentJobs] = useState([]); // state to store the last 10 jobs
+  const [search, setSearch] = useState('Developer'); // state to store the search query
+  const [jobType, setJobType] = useState(''); // state to store the job type
+  const [skill, setSkill] = useState('7'); // state to store the skill
+  const [types2, setTypes2] = useState(''); // state to store the job type
+  const [jobs, setJobs] = useState([]); // state to store the jobs
+  const [allJobs, setAllJobs] = useState([]); // state to store all the jobs
+  console.log('jobType', jobType);
+  const fetchJobs = async () => {
+    const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}&type[]=${jobType}&type[]=${types2}`);
+    const data = await res.json();
+    setJobs(data);
+  };
+  const fetchAllJobs = async () => {
+    const res = await fetch('https://job-search-api.dev.io-academy.uk/jobs');
+    const data = await res.json();
+    setAllJobs(data);
+  };
 
+  useEffect(() => {
+    fetchJobs();
+    fetchAllJobs();
+  }, [jobType]);
   //function to get the recent jobs
   const getRecentJobs = async () => {
     //try catch block to handle the fetch request
@@ -37,11 +58,21 @@ function JobContextProvider ({children}) {
     //we export the recentJobs and setRecentJobs state
     recentJobs,
     setRecentJobs,
+    jobs,
+    setJobs,
+    search,
+    setSearch,
+    jobType,
+    setJobType,
+    allJobs,
+    setAllJobs,
+    setSkill,
+    setTypes2,
   };
 
   //we wrap the children in the JobContext.Provider and pass the contextValue to the value prop
 
   return <JobContext.Provider value={contextValue}>{children}</JobContext.Provider>;
-};
+}
 
 export { JobContext, JobContextProvider };

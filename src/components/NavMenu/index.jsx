@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { JobContext } from '../../context';
 
 function NavMenu() {
   const [mobileMenu, setMobileMenu] = useState(false);
+  const { setJobType } = useContext(JobContext);
 
   function toggleMobileMenu() {
     setMobileMenu(!mobileMenu);
+  }
+  function handleJobTypeClick(jobType) {
+    setJobType(jobType);
   }
 
   return (
@@ -31,10 +36,18 @@ function NavMenu() {
               : 'hidden md:static md:flex md:flex-row md:basis-3/4'
           }>
           <div className='flex flex-col gap-2 md:flex-row md:items-center md:justify-center md:basis-2/3'>
-            <NavLink to='#'>All Jobs</NavLink>
-            <NavLink to='#'>Full time</NavLink>
-            <NavLink to='#'>Part time</NavLink>
-            <NavLink to='#'>Contract</NavLink>
+            <NavLink to='#' onClick={() => handleJobTypeClick('')}>
+              All Jobs
+            </NavLink>
+            <NavLink to='#' onClick={() => handleJobTypeClick('Full time')}>
+              Full time
+            </NavLink>
+            <NavLink to='#' onClick={() => handleJobTypeClick('Part time')}>
+              Part time
+            </NavLink>
+            <NavLink to='#' onClick={() => handleJobTypeClick('Contract')}>
+              Contract
+            </NavLink>
           </div>
           <div className='my-2 md:basis-1/3 md:flex md:justify-end'>
             <a href='#' className='border border-green-600 rounded-md p-1 text-green-600 '>

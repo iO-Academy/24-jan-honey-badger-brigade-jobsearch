@@ -1,16 +1,16 @@
 import NavMenu from '../NavMenu';
 import RecentJobs from '../RecentJobs';
-import SearchArea from '../SearchArea';
+import SearchBar from '../SearchBar';
 
 function HomePage() {
   return (
     <>
-      {/* <SearchArea /> */}
+      <SearchBar />
       <RecentJobs />
       {/* <BrowseSkills /> */}
       {/* <RecentCompanies /> */}
 
-     
+
     </>
   );
 }

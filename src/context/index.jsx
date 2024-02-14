@@ -6,9 +6,10 @@ const JobContext = createContext();
 function JobContextProvider({ children }) {
   const [recentJobs, setRecentJobs] = useState([]); // state to store the last 10 jobs
   const [jobs, setJobs] = useState([]);
-  const [search, setSearch] = useState('developer');
+  const [search, setSearch] = useState('');
 
   const fetchJobs = async () => {
+    console.log('fetch jobs')
     const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}`);
     const data = await res.json();
     setJobs(data);
@@ -16,9 +17,9 @@ function JobContextProvider({ children }) {
 
   useEffect(() => {
     fetchJobs();
-  }, []);
+  }, [search]);
 
-  console.log(jobs);
+
 
   //function to get the recent jobs
   const getRecentJobs = async () => {
@@ -51,6 +52,7 @@ function JobContextProvider({ children }) {
     //we export the recentJobs and setRecentJobs state
     recentJobs,
     setRecentJobs,
+    setSearch,
   };
 
   //we wrap the children in the JobContext.Provider and pass the contextValue to the value prop

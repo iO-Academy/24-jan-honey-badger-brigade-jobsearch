@@ -1,9 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import RecentJobs from './components/RecentJobs';
-import SearchArea from './components/SearchArea';
-
 import { JobContextProvider } from './context';
+import modalContext from './context/modalContext';
 import NavMenu from './components/NavMenu';
 import SearchResults from './components/SearchResults';
 import modalContext from './context/modalContext';
@@ -18,18 +17,19 @@ function App() {
     setID(click.currentTarget.id)
     setModal(!modal)
   }
+
   return (
     <div className='font-sans font-normal text-base bg-slate-50'>
       <JobContextProvider>
-        <modalContext.Provider value={{ modal: modal, toggleModal: toggleModal, modalID: modalID, }}>
+        <modalContext.Provider value={ {modal: modal, toggleModal: toggleModal, modalID: modalID,} }>
           <BrowserRouter>
             <NavMenu />
-
-            {/* <SearchResults /> */}
             <Routes>
               <Route path='/' element={<HomePage />} />
-              <Route path='/jobs' element={<SearchArea />} />
-              <Route path='jobs/:id' element={<SearchArea />} />
+              <Route path='/jobs' element={<SearchResults />} />
+              <Route path='jobs/:id' element={<SearchResults />} />
+
+
               <Route path='/jobs/recent' element={<RecentJobs />} />
             </Routes>
           </BrowserRouter>

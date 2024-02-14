@@ -45,4 +45,4 @@ function SearchResults() {
           </section>
         );       
 }
-export default SearchResults
+export default SearchResults;

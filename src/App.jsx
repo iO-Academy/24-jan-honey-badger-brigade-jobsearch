@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import RecentJobs from './components/RecentJobs';
-import SearchArea from './components/SearchArea';
+
 
 import { JobContextProvider } from './context';
 import NavMenu from './components/NavMenu';
 import SearchResults from './components/SearchResults';
+
 
 function App() {
   return (
@@ -13,12 +14,10 @@ function App() {
       <JobContextProvider>
         <BrowserRouter>
           <NavMenu />
-          
-          <SearchResults />
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/jobs' element={<SearchArea />} />
-            <Route path='jobs/:id' element={<SearchArea />} />
+            <Route path='/jobs' element={<SearchResults />} />
+            <Route path='jobs/:id' element={<SearchResults />} />
             <Route path='/jobs/recent' element={<RecentJobs />} />
           </Routes>
         </BrowserRouter>

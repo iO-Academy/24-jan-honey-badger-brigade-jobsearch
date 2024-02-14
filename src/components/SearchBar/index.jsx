@@ -2,7 +2,7 @@
 import { useContext, useState } from "react"
 import { JobContext } from "../../context";
 
-function SearchBar() {
+function SearchBar({ toggle }) {
     const [searchJob, setSearchJob] = useState('')
 
     const { setSearch } = useContext(JobContext)
@@ -42,11 +42,11 @@ function SearchBar() {
                     </div>
 
                     <div>
-                        <input className="bg-blue-500 py-2 px-3 rounded text-white" type="submit" value="Search" />
+                        <input className="bg-blue-500 py-2 px-3 rounded text-white" onClick={toggle} type="submit" value="Search" />
                     </div>
-                  </div>
-              </div>
-          </form>
+                </div>
+            </div>
+        </form>
 
     )
 

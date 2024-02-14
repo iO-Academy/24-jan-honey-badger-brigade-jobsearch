@@ -7,6 +7,7 @@ function JobContextProvider({ children }) {
   const [recentJobs, setRecentJobs] = useState([]); // state to store the last 10 jobs
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState('');
+  const [typeFilter, setType] = useState('')
 
   const fetchJobs = async () => {
     const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}`);
@@ -17,6 +18,10 @@ function JobContextProvider({ children }) {
   useEffect(() => {
     fetchJobs();
   }, [search]);
+
+  useEffect(() => {
+    fetchJobs();
+  }, [typeFilter]);
 
   //function to get the recent jobs
   const getRecentJobs = async () => {

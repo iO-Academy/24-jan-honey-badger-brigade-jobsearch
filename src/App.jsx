@@ -5,6 +5,7 @@ import SearchArea from './components/SearchArea';
 
 import { JobContextProvider } from './context';
 import NavMenu from './components/NavMenu';
+import SearchResults from './components/SearchResults';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
        
         <BrowserRouter>
           <NavMenu />
+          
+          <SearchResults />
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/jobs' element={<SearchArea />} />

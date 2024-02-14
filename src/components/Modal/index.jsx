@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { JobContext } from '../../context';
 import modalContext from '../../context/modalContext';
 
@@ -31,11 +31,18 @@ function JobModal() {
   }
 
   return (
-    <div className={`Modal-container px-2 border-2 border-slate-400 z-10 fixed my-5 bg-white  left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2`}>
-      <div className='flex my-4 ml-2 border-slate-200 border-b-2 pb-4'>
-        <div className='flex flex-row gap-2'>
-          <h2>{`${job.job_title} -`}</h2>
-          <h2>{job.company}</h2>
+    <section onClick={toggleModal} className='p-2.5 z-10 bg-zinc-500/50 w-full min-h-screen fixed overflow-auto top-0 left-0'>
+      <div className='Modal-container px-4 m-2 md:mx-auto md:my-2 w-full md:max-w-screen-md overflow-auto z-20 absolute my-5 bg-white left-1/2 transform -translate-x-1/2'>
+        <div className='flex justify-between my-4 ml-2 border-slate-200 border-b-2 pb-4'>
+          <div className='flex flex-row gap-2 font-bold'>
+            <h2>{`${jobTitle} -`}</h2>
+            <h2>{jobCompany}</h2>
+          </div>
+          <span>
+            <svg onClick={toggleModal} xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='3' stroke='currentColor' className='w-6 h-6 stroke-blue-500'>
+            <path strokeLinecap='round' strokeLinejoin='round' d='M6 18 18 6M6 6l12 12' />
+            </svg>
+          </span>
         </div>
         <div className='bg-zinc-50'>
           <div className='logo-company text-white bg-blue-500 flex flex-row gap-3 items-center pl-5 py-10'>
@@ -97,7 +104,7 @@ function JobModal() {
               </div>  */}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -22,6 +22,6 @@ function JobCard({ salary, type, title, company, logo, skills, url }) {
         <span className='flex gap-2 items-center justify-start w-[25%] flex-wrap'>{skills}</span>
       </div>
     </div>
-  );
+  )
 }
 export default JobCard;

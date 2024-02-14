@@ -13,7 +13,7 @@ function JobModal() {
   const [jobSkills, setSkills] = useState([])
   const [jobDesc, setDesc] = useState('')
   const jobURL = `https://job-search-api.dev.io-academy.uk/jobs/${modalID}`
-  console.log(jobURL)
+  
   useEffect(getJobDetails, [])
 
   function getJobDetails() {
@@ -75,6 +75,7 @@ function JobModal() {
                       <div className='flex flex-row gap-1 flex-wrap'>
                         {jobSkills.map((skill) => (
                         <span key={skill.id} className='bg-teal-400 text-white font-semibold text-sm px-2.5 py-1.5 rounded-lg'>
+
                           {skill.skill}
                         </span>
                       ))}

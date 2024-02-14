@@ -5,13 +5,14 @@ import { JobContextProvider } from './context';
 import modalContext from './context/modalContext';
 import NavMenu from './components/NavMenu';
 import SearchResults from './components/SearchResults';
+import modalContext from './context/modalContext';
 import { useState } from 'react';
 
+
 function App() {
- 
   const [modal, setModal] = useState(false)
   const [modalID, setID] = useState('')
-  
+
   const toggleModal = click => {
     setID(click.currentTarget.id)
     setModal(!modal)
@@ -27,6 +28,8 @@ function App() {
               <Route path='/' element={<HomePage />} />
               <Route path='/jobs' element={<SearchResults />} />
               <Route path='jobs/:id' element={<SearchResults />} />
+
+
               <Route path='/jobs/recent' element={<RecentJobs />} />
             </Routes>
           </BrowserRouter>

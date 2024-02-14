@@ -13,8 +13,8 @@ function App() {
       <JobContextProvider>
         <BrowserRouter>
           <NavMenu />
-          
-          <SearchResults />
+
+          {/* <SearchResults /> */}
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/jobs' element={<SearchArea />} />

@@ -6,22 +6,34 @@ import SearchArea from './components/SearchArea';
 import { JobContextProvider } from './context';
 import NavMenu from './components/NavMenu';
 import SearchResults from './components/SearchResults';
+import modalContext from './context/modalContext';
+import { useState } from 'react';
+
 
 function App() {
+  const [modal, setModal] = useState(false)
+  const [modalID, setID] = useState('')
+
+  const toggleModal = click => {
+    setID(click.currentTarget.id)
+    setModal(!modal)
+  }
   return (
     <div className='font-sans font-normal text-base bg-slate-50'>
       <JobContextProvider>
-        <BrowserRouter>
-          <NavMenu />
+        <modalContext.Provider value={{ modal: modal, toggleModal: toggleModal, modalID: modalID, }}>
+          <BrowserRouter>
+            <NavMenu />
 
-          {/* <SearchResults /> */}
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/jobs' element={<SearchArea />} />
-            <Route path='jobs/:id' element={<SearchArea />} />
-            <Route path='/jobs/recent' element={<RecentJobs />} />
-          </Routes>
-        </BrowserRouter>
+            {/* <SearchResults /> */}
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/jobs' element={<SearchArea />} />
+              <Route path='jobs/:id' element={<SearchArea />} />
+              <Route path='/jobs/recent' element={<RecentJobs />} />
+            </Routes>
+          </BrowserRouter>
+        </modalContext.Provider>
       </JobContextProvider>
       <footer className='bg-white text-sm'>
         <div className='p-2.5 mx-auto w-full md:max-w-screen-md'>© Copyright iO Academy 2022</div>

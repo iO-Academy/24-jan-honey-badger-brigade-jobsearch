@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import modalContext from "../../context/modalContext";
 
+
 function JobCard({ salary, type, title, company, logo, skills, url }) {
   const {modal, toggleModal} = useContext(modalContext)
-  
+
   return ( 
     <div className='flex flex-col even:bg-zinc-700 odd:bg-zinc-500 w-full'  
     id={url} onClick={toggleModal}>

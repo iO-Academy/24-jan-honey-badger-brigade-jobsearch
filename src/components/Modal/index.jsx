@@ -13,6 +13,7 @@ function JobModal() {
   const [jobSkills, setSkills] = useState([])
   const [jobDesc, setDesc] = useState('')
   const jobURL = `https://job-search-api.dev.io-academy.uk/jobs/${modalID}`
+  console.log(jobURL)
   useEffect(getJobDetails, [])
 
   function getJobDetails() {
@@ -59,21 +60,21 @@ function JobModal() {
                 <div className='facts flex flex-row gap-2'>
                   <div className='flex flex-col gap-1 basis-1/4 md:basis-2/12'>
                     <div className='font-bold'>Salary:</div>
-                    <div>{`£${jobSalary}`}</div>
+                    <div className='py-1.5'>{`£${jobSalary}`}</div>
                   </div>
                   <div className='flex flex-col gap-1 basis-1/4 md:basis-2/12'>
                     <div className='font-bold'>Type: </div>
-                    <div>{jobType}</div>
+                    <div className='py-1.5'>{jobType}</div>
                   </div>
                   <div className='flex flex-col gap-1 basis-1/4 md:basis-2/12'>
-                    <div className='font-bold'>Data posted: </div>
-                    <div>{jobDate}</div>
+                    <div className='font-bold'>Date posted: </div>
+                    <div className='py-1.5'>{jobDate}</div>
                   </div>
                   <div className='flex flex-col gap-1 basis-1/4 md:basis-6/12'>
-                    <div className='font-bold'>Skills</div>
+                    <div className='font-bold'>Skills:</div>
                       <div className='flex flex-row gap-1 flex-wrap'>
                         {jobSkills.map((skill) => (
-                        <span key={skill.id} className='bg-blue-500 text-white p-1 rounded-lg'>
+                        <span key={skill.id} className='bg-teal-400 text-white font-semibold text-sm px-2.5 py-1.5 rounded-lg'>
                           {skill.skill}
                         </span>
                       ))}

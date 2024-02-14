@@ -1,11 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import JobCard from '../JobCard';
 import { JobContext } from '../../context';
 import SkillsItems from '../SkillsItems';
+import JobModal from '../Modal';
+import modalContext from '../../context/modalContext';
 
 function SearchResults() {
 
-        const { jobs } = useContext(JobContext);
+  const { jobs } = useContext(JobContext);
+  const {modal, toggleModal} = useContext(modalContext)
 
         return (
           <section className='font-sans items-center justify-center mx-auto overflow-hidden px-2.5 w-full md:max-w-screen-md'>
@@ -37,12 +40,15 @@ function SearchResults() {
                       company={job.company}
                       logo={job.logo}
                       skills={<SkillsItems key={job.id} skills={job.skills} />}
+                      url={job.id}
                     />
                   ))}
                 </div>
               </div>
             </div>
-          </section>
+            {modal && <JobModal toggle={toggleModal}/>}   
+            </section>
+                
         );       
 }
 export default SearchResults;

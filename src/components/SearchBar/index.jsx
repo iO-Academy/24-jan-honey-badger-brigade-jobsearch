@@ -1,3 +1,4 @@
+
 import { useContext, useState } from "react"
 import { JobContext } from "../../context";
 
@@ -35,21 +36,20 @@ function SearchBar() {
                                 <input type="checkbox" id="contract" />
                                 <label className="text-white text-sm" htmlFor="contract">Contract</label>
                             </div>
-
                         </div>
 
                         <div>
                             <p className="text-white text-xs">Popular skills:</p>
                         </div>
-
                     </div>
 
                     <div>
                         <input className="bg-blue-500 py-2 px-3 rounded text-white" type="submit" value="Search" />
                     </div>
-                </div>
-            </div>
-        </form>
+                  </div>
+              </div>
+          </form>
+
     )
 
 }

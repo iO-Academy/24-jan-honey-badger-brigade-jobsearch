@@ -9,7 +9,6 @@ function JobContextProvider({ children }) {
   const [search, setSearch] = useState('');
 
   const fetchJobs = async () => {
-    console.log('fetch jobs')
     const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}`);
     const data = await res.json();
     setJobs(data);
@@ -18,8 +17,6 @@ function JobContextProvider({ children }) {
   useEffect(() => {
     fetchJobs();
   }, [search]);
-
-
 
   //function to get the recent jobs
   const getRecentJobs = async () => {
@@ -52,6 +49,8 @@ function JobContextProvider({ children }) {
     //we export the recentJobs and setRecentJobs state
     recentJobs,
     setRecentJobs,
+    jobs,
+    setJobs,
     setSearch,
   };
 

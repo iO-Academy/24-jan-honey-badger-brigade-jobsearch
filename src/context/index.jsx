@@ -32,7 +32,7 @@ function JobContextProvider({ children }) {
     const data = await res.json();
     setAllJobs(data);
   };
-  console.log(search, jobs)
+  
   useEffect(() => {
     fetchJobs();
     fetchAllJobs();

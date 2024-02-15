@@ -4,9 +4,8 @@ import RecentJobs from './components/RecentJobs';
 import { JobContextProvider } from './context';
 import modalContext from './context/modalContext';
 import NavMenu from './components/NavMenu';
-import SearchResults from './components/SearchResults';
 import { useState } from 'react';
-
+import SearchResults from './components/SearchResults';
 
 function App() {
   const [modal, setModal] = useState(false)
@@ -22,11 +21,10 @@ function App() {
         <modalContext.Provider value={{ modal: modal, toggleModal: toggleModal, modalID: modalID, }}>
           <BrowserRouter>
             <NavMenu />
-
             {/* <SearchResults /> */}
             <Routes>
               <Route path='/' element={<HomePage />} />
-              <Route path='/jobs' element={<SearchResults />} />
+              <Route path='/job' element={<SearchResults />} />
               <Route path='jobs/:id' element={<SearchResults />} />
               <Route path='/jobs/recent' element={<RecentJobs />} />
             </Routes>

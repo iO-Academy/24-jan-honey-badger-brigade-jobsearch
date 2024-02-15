@@ -12,9 +12,9 @@ function JobContextProvider({ children }) {
   const [jobs, setJobs] = useState([]); // state to store the jobs
   const [allJobs, setAllJobs] = useState([]); // state to store all the jobs
 
-  
+
   const fetchJobs = async () => {
-    const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}&type[]=${jobType}&type[]=${types2}`);
+    const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}`);
     const data = await res.json();
     setJobs(data);
   };

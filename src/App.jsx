@@ -8,24 +8,25 @@ import { useState } from 'react';
 import SearchResults from './components/SearchResults';
 
 function App() {
-  const [modal, setModal] = useState(false)
-  const [modalID, setID] = useState('')
+  const [modal, setModal] = useState(false);
+  const [modalID, setID] = useState('');
 
-  const toggleModal = click => {
-    setID(click.currentTarget.id)
-    setModal(!modal)
-  }
+  const toggleModal = (click) => {
+    setID(click.currentTarget.id);
+    setModal(!modal);
+  };
+
   return (
     <div className='font-sans font-normal text-base bg-slate-50'>
       <JobContextProvider>
-        <modalContext.Provider value={{ modal: modal, toggleModal: toggleModal, modalID: modalID, }}>
+        <modalContext.Provider value={{ modal: modal, toggleModal: toggleModal, modalID: modalID }}>
           <BrowserRouter>
             <NavMenu />
-            {/* <SearchResults /> */}
             <Routes>
               <Route path='/' element={<HomePage />} />
-              <Route path='/job' element={<SearchResults />} />
+              <Route path='/jobs' element={<SearchResults />} />
               <Route path='jobs/:id' element={<SearchResults />} />
+
               <Route path='/jobs/recent' element={<RecentJobs />} />
             </Routes>
           </BrowserRouter>

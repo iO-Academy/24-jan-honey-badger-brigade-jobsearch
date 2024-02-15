@@ -4,12 +4,13 @@ import { JobContext } from '../../context';
 
 function NavMenu() {
   const [mobileMenu, setMobileMenu] = useState(false);
-  const { setJobType, setJobTypeToggle, setRecentJob, setResults } = useContext(JobContext);
+  const { setJobType, setJobTypeToggle, setRecentJob, setResults, setSearch } = useContext(JobContext);
 
   function toggleTypes() {
     setJobTypeToggle(true)
     setRecentJob(false);
     setResults(false);
+    setSearch('');
   }
 
   function toggleMobileMenu() {

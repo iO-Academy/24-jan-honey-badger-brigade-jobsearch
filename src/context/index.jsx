@@ -5,20 +5,25 @@ const JobContext = createContext();
 
 function JobContextProvider({ children }) {
   const [recentJobs, setRecentJobs] = useState([]); // state to store the last 10 jobs
-  const [search, setSearch] = useState('Developer'); // state to store the search query
-  const [jobType, setJobType] = useState(''); // state to store the job type
-  const [skill, setSkill] = useState('7'); // state to store the skill
-  const [types2, setTypes2] = useState(''); // state to store the job type
+  const [search, setSearch] = useState(''); // state to store the search query
+  const [jobType, setJobType] = useState(null); // state to store the job type
+  const [skill, setSkill] = useState('0'); // state to store the skill
+  const [types2, setTypes2] = useState(null); // state to store the job type
   const [jobs, setJobs] = useState([]); // state to store the jobs
   const [allJobs, setAllJobs] = useState([]); // state to store all the jobs
   const [jobTypeToggle, setJobTypeToggle] = useState(false);
   const [results, setResults] = useState(false);
   const [recentJob, setRecentJob] = useState(true);
 
-
-
   const fetchJobs = async () => {
-    const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}&type[]=${jobType}&type[]=${types2}`);
+    let url = `https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}`;
+    if(jobType != null){
+      url += `&type[]=${jobType}`
+    }
+    if(types2 != null){
+      url += `&type[]=${types2}`
+    }
+    const res = await fetch(url);
     const data = await res.json();
     setJobs(data);
   };
@@ -27,11 +32,13 @@ function JobContextProvider({ children }) {
     const data = await res.json();
     setAllJobs(data);
   };
-
+  console.log(search, jobs)
   useEffect(() => {
     fetchJobs();
     fetchAllJobs();
-  }, [jobType]);
+  }, [jobType, search]);
+
+
   //function to get the recent jobs
   const getRecentJobs = async () => {
     //try catch block to handle the fetch request

@@ -2,14 +2,17 @@ import { useContext } from 'react';
 import { JobContext } from '../../context';
 import JobCard from '../JobCard';
 import SkillsItems from '../SkillsItems';
+import JobModal from '../Modal';
+import modalContext from '../../context/modalContext';
 
 const JobTypePage = () => {
   const { jobs, allJobs } = useContext(JobContext);
   const jobList = jobs.length > 0 ? jobs : allJobs;
+  const { modal, toggleModal } = useContext(modalContext);
   return (
     <section className='font-sans items-center justify-center mx-auto overflow-hidden px-2.5 w-full md:max-w-screen-md'>
       <div className='flex flex-row justify-center items-center py-3'>
-        <h3 className='flex justify-start font-bold text-3xl'>Job Type Results</h3>
+        <h3 className='flex justify-start font-bold text-3xl'>Search Results</h3>
         <a className='flex ml-auto font-semibold text-blue-600' href='#'>
           View all jobs &#8594;
         </a>
@@ -36,11 +39,13 @@ const JobTypePage = () => {
                 company={job.company}
                 logo={job.logo}
                 skills={<SkillsItems key={job.id} skills={job.skills} />}
+                url={job.id}
               />
             ))}
           </div>
         </div>
       </div>
+      {modal && <JobModal toggle={toggleModal} />}
     </section>
   );
 };

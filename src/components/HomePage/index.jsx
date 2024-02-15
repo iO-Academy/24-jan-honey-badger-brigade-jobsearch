@@ -6,7 +6,7 @@ import JobTypePage from '../JobTypePage'
 import { JobContext } from '../../context';
 
 function HomePage() {
-  const { setJobTypeToggle, jobTypeToggle, results, setResults, recentJob, setRecentJob } = useContext(JobContext)
+  const { setJobTypeToggle, jobTypeToggle, results, setResults, recentJob, setRecentJob, setSearch} = useContext(JobContext)
 
   function toggleResults() {
     setResults(true);
@@ -21,12 +21,13 @@ function HomePage() {
   function toggleReset() {
     setRecentJob(true);
     setResults(false);
+    setSearch('');
   }
 
   return (
     <>
       <SearchBar toggle={toggleResults} />
-      {jobTypeToggle ? (<JobTypePage />) :
+      {jobTypeToggle ? (<JobTypePage toggle={toggleReset} />) :
         (results ? <SearchResults toggle={toggleReset} /> : <RecentJobs toggle={toggleRecents} />)}
       {/* <BrowseSkills /> */}
       {/* <RecentCompanies /> */}

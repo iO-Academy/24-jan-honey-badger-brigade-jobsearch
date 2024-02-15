@@ -30,7 +30,7 @@ function RecentJobs({ toggle }) {
             </div>
             <div>
               {recentJobs.map((job) => (
-                <JobCard
+                <JobCard className="cursor-pointer"
                   key={job.id}
                   salary={job.salary != null ? job.salary : ' -'}
                   type={job.type != null ? job.type : 'N/A'}

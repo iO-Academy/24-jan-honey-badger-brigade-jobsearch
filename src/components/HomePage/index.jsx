@@ -22,9 +22,6 @@ function HomePage() {
     setResults(false);
   }
 
-  console.log('results: ', results);
-  console.log('results recent: ', recentJobs);
-
   return (
     <>
       <SearchBar toggle={toggleResults} />

@@ -87,7 +87,7 @@ function JobModal() {
             </div>
             <div className='flex my-6 mx-2 p-1 items-center'>
               <button className='bg-green-600 text-white p-2 rounded-lg'>Apply Now</button>
-              <button className='ml-auto rounded-lg border-2 p-1 border-zinc-400 text-zinc-400'>Save for later</button>
+              {/* <button className='ml-auto rounded-lg border-2 p-1 border-zinc-400 text-zinc-400'>Save for later</button> */}
             </div>
           </div>
           {/* <div className='mt-8 mx-10'>

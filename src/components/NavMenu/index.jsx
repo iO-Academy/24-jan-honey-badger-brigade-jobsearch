@@ -4,7 +4,14 @@ import { JobContext } from '../../context';
 
 function NavMenu() {
   const [mobileMenu, setMobileMenu] = useState(false);
-  const { setJobType } = useContext(JobContext);
+  const { setJobType, setJobTypeToggle, setRecentJob, setResults, setSearch } = useContext(JobContext);
+
+  function toggleTypes() {
+    setJobTypeToggle(true)
+    setRecentJob(false);
+    setResults(false);
+    setSearch('');
+  }
 
   function toggleMobileMenu() {
     setMobileMenu(!mobileMenu);
@@ -36,16 +43,16 @@ function NavMenu() {
               : 'hidden md:static md:flex md:flex-row md:basis-3/4'
           }>
           <div className='flex flex-col gap-2 md:flex-row md:items-center md:justify-center md:basis-2/3'>
-            <NavLink to='#' onClick={() => handleJobTypeClick('')}>
+            <NavLink to='#' onClick={() => { handleJobTypeClick(''); toggleTypes() }}>
               All Jobs
             </NavLink>
-            <NavLink to='#' onClick={() => handleJobTypeClick('Full time')}>
+            <NavLink to='#' onClick={() => { handleJobTypeClick('Full time'); toggleTypes() }}>
               Full time
             </NavLink>
-            <NavLink to='#' onClick={() => handleJobTypeClick('Part time')}>
+            <NavLink to='#' onClick={() => { handleJobTypeClick('Part time'); toggleTypes() }}>
               Part time
             </NavLink>
-            <NavLink to='#' onClick={() => handleJobTypeClick('Contract')}>
+            <NavLink to='#' onClick={() => { handleJobTypeClick('Contract'); toggleTypes() }}>
               Contract
             </NavLink>
           </div>

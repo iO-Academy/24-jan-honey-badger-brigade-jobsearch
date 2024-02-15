@@ -10,8 +10,7 @@ function JobCard({ salary, type, title, company, logo, skills, url }) {
     setJobType(jobType);
   }
   return (
-    <div className='flex flex-col even:bg-zinc-700 odd:bg-zinc-500 w-full cursor-pointer'
-      id={url} onClick={toggleModal}>
+    <div className='flex flex-col even:bg-zinc-700 odd:bg-zinc-500 w-full cursor-pointer'>
       <div className='flex py-5 px-2 justify-between items-start'>
         <div className='flex gap-2 w-[45%] pr-2' id={url} onClick={toggleModal}>
           <img className='h-20 w-20 hidden md:block' src={logo} />
@@ -21,7 +20,7 @@ function JobCard({ salary, type, title, company, logo, skills, url }) {
           </div>
         </div>
         <div className='w-[15%]'>
-          <span className='font-semibold text-sm text-white px-1.5 py-0.5 bg-blue-500 rounded-lg' onClick={() => handleJobTypeClick(jobType)}>{type}</span>
+          <span className='font-semibold text-sm text-white px-1.5 py-0.5 bg-blue-500 rounded-lg' onClick={() => handleJobTypeClick(type)}>{type}</span>
         </div>
         <p className='text-base text-white w-[15%]' id={url} onClick={toggleModal}>{`£${salary}`}</p>
         <span className='flex gap-2 items-center justify-start w-[25%] flex-wrap'>{skills}</span>

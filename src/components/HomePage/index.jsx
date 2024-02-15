@@ -2,11 +2,11 @@ import { useContext, useState } from 'react';
 import RecentJobs from '../RecentJobs';
 import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
-import JobTypePage from '../JobTypePage'
+import JobTypePage from '../JobTypePage';
 import { JobContext } from '../../context';
 
 function HomePage() {
-  const { setJobTypeToggle, jobTypeToggle, results, setResults, recentJob, setRecentJob, setSearch} = useContext(JobContext)
+  const { setJobTypeToggle, jobTypeToggle, results, setResults, recentJob, setRecentJob, setSearch } = useContext(JobContext);
 
   function toggleResults() {
     setResults(true);
@@ -21,14 +21,12 @@ function HomePage() {
   function toggleReset() {
     setRecentJob(true);
     setResults(false);
-    setSearch('');
   }
 
   return (
     <>
       <SearchBar toggle={toggleResults} />
-      {jobTypeToggle ? (<JobTypePage toggle={toggleReset} />) :
-        (results ? <SearchResults toggle={toggleReset} /> : <RecentJobs toggle={toggleRecents} />)}
+      {jobTypeToggle ? <JobTypePage toggle={toggleReset} /> : results ? <SearchResults toggle={toggleReset} /> : <RecentJobs toggle={toggleRecents} />}
       {/* <BrowseSkills /> */}
       {/* <RecentCompanies /> */}
     </>

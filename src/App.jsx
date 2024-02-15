@@ -33,7 +33,7 @@ function App() {
         </modalContext.Provider>
       </JobContextProvider>
       <footer className='bg-white text-sm'>
-        <div className='p-2.5 mx-auto w-full md:max-w-screen-md'>© Copyright iO Academy 2022</div>
+        <div className='p-2.5 mx-auto w-full lg:max-w-screen-lg'>© Copyright iO Academy 2022</div>
       </footer>
     </div>
   );

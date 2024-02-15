@@ -7,6 +7,8 @@ function JobContextProvider({ children }) {
   const [recentJobs, setRecentJobs] = useState([]); // state to store the last 10 jobs
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState('');
+  const [skillList, setSkillList] = useState([]);
+  const [skillID, setSkillID] = useState('');
 
   const fetchJobs = async () => {
     const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}`);
@@ -45,6 +47,26 @@ function JobContextProvider({ children }) {
     getRecentJobs();
   }, []);
 
+  //call the skill api and get the browse skills box data
+
+  const getSkillList = async () => {
+    try {
+      const res = await fetch('https://job-search-api.dev.io-academy.uk/skills');
+      const data = await res.json(); 
+      if (!data) {
+        console.log('no data');
+      } else {
+        setSkillList(data.slice(0,8));
+      }
+    } catch (error) {
+      console.error('Failed to fetch skill list', error);
+    }
+  };
+
+  useEffect(() => {
+    getSkillList();
+  }, []);
+
   const contextValue = {
     //we export the recentJobs and setRecentJobs state
     recentJobs,
@@ -52,7 +74,12 @@ function JobContextProvider({ children }) {
     jobs,
     setJobs,
     setSearch,
+    setSkillList,
+    skillList,
+    setSkillID,
+    skillID
   };
+
 
   //we wrap the children in the JobContext.Provider and pass the contextValue to the value prop
 

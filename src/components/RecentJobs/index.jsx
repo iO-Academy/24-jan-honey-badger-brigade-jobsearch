@@ -11,7 +11,7 @@ function RecentJobs({ toggle }) {
 
   return (
     <>
-      <section className='font-sans items-center justify-center mx-auto overflow-hidden px-2.5 w-full md:max-w-screen-md' >
+      <section className='font-sans items-center justify-center mx-auto overflow-hidden px-2.5 w-full lg:max-w-screen-lg' >
         <div className='flex flex-row justify-center items-center py-3'>
           <h3 className='flex justify-start font-bold text-3xl'>Most Recent Jobs</h3>
           <a className='flex ml-auto font-semibold text-blue-600' href='#' onClick={toggle}>

@@ -4,11 +4,35 @@ import { JobContext } from '../../context';
 function SearchBar({ toggle }) {
   const [searchJob, setSearchJob] = useState('');
 
-  const { setSearch } = useContext(JobContext);
+  const { setSearch, setJobType, jobType, types2, setTypes2, types3, setTypes3 } = useContext(JobContext);
 
   function submitSearch(e) {
     e.preventDefault();
     setSearch(searchJob);
+  }
+
+  function handleFullTimeClick(type) {
+    if (jobType == null) {
+      setJobType(type)
+    } else {
+      setJobType(null)
+    }
+
+  }
+  function handlePartTimeClick(type) {
+    if (types2 == null) {
+      setTypes2(type)
+    } else {
+      setTypes2(null)
+    }
+  }
+
+  function handleContractClick(type) {
+    if (types3 == null) {
+      setTypes3(type)
+    } else {
+      setTypes3(null)
+    }
   }
 
   return (
@@ -23,19 +47,19 @@ function SearchBar({ toggle }) {
           <div className='flex justify-between items-center'>
             <div className='flex gap-3'>
               <div className='flex gap-1 items-center'>
-                <input type='checkbox' id='full-time' />
+                <input type='checkbox' id='full-time' onChange={() => handleFullTimeClick('Full time')} />
                 <label className='text-white text-sm' htmlFor='full-time'>
                   Full time
                 </label>
               </div>
               <div className='flex gap-1 items-center'>
-                <input type='checkbox' id='part-time' />
+                <input type='checkbox' id='part-time' onChange={() => handlePartTimeClick('Part time')} />
                 <label className='text-white text-sm' htmlFor='part-time'>
                   Part time
                 </label>
               </div>
               <div className='flex gap-1 items-center'>
-                <input type='checkbox' id='contract' />
+                <input type='checkbox' id='contract' onChange={() => handleContractClick('Contract')} />
                 <label className='text-white text-sm' htmlFor='contract'>
                   Contract
                 </label>
@@ -56,4 +80,5 @@ function SearchBar({ toggle }) {
     </form >
   );
 }
+
 export default SearchBar;

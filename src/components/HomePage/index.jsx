@@ -2,6 +2,7 @@ import { useState } from 'react';
 import RecentJobs from '../RecentJobs';
 import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
+import RecentCompanies from '../RecentCompanies';
 // import SkillBoxes from '../SkillBoxes';
 
 function HomePage() {

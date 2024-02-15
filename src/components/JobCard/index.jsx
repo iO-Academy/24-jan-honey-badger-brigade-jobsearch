@@ -4,11 +4,8 @@ import { JobContext } from "../../context";
 
 function JobCard({ salary, type, title, company, logo, skills, url }) {
   const { modal, toggleModal } = useContext(modalContext)
-  const { jobType, setJobType } = useContext(JobContext)
+  const { jobType, setJobType,  } = useContext(JobContext)
 
-  function handleJobTypeClick(jobType) {
-    setJobType(jobType);
-  }
   return (
     <div className='flex flex-col even:bg-zinc-700 odd:bg-zinc-500 w-full cursor-pointer'>
       <div className='flex py-5 px-2 justify-between items-start'>

@@ -7,7 +7,7 @@ function JobContextProvider({ children }) {
   const [recentJobs, setRecentJobs] = useState([]); // state to store the last 10 jobs
   const [search, setSearch] = useState(''); // state to store the search query
   const [jobType, setJobType] = useState(null); // state to store the job type
-  const [skill, setSkill] = useState('0'); // state to store the skill
+  const [skillID, setSkill] = useState('0'); // state to store the skill
   const [types2, setTypes2] = useState(null); // state to store the job type
   const [jobs, setJobs] = useState([]); // state to store the jobs
   const [allJobs, setAllJobs] = useState([]); // state to store all the jobs
@@ -15,8 +15,9 @@ function JobContextProvider({ children }) {
   const [results, setResults] = useState(false);
   const [recentJob, setRecentJob] = useState(true);
 
+
   const fetchJobs = async () => {
-    let url = `https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}`;
+    let url = `https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skillID}`;
     if(jobType != null){
       url += `&type[]=${jobType}`
     }
@@ -78,7 +79,9 @@ function JobContextProvider({ children }) {
     setJobType,
     allJobs,
     setAllJobs,
+    skillID,
     setSkill,
+    types2,
     setTypes2,
     jobTypeToggle,
     setJobTypeToggle,

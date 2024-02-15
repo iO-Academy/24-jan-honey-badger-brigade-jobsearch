@@ -11,10 +11,14 @@ function JobContextProvider({ children }) {
   const [types2, setTypes2] = useState(''); // state to store the job type
   const [jobs, setJobs] = useState([]); // state to store the jobs
   const [allJobs, setAllJobs] = useState([]); // state to store all the jobs
+  const [jobTypeToggle, setJobTypeToggle] = useState(false);
+  const [results, setResults] = useState(false);
+  const [recentJob, setRecentJob] = useState(true);
+
 
 
   const fetchJobs = async () => {
-    const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}`);
+    const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}&type[]=${jobType}&type[]=${types2}`);
     const data = await res.json();
     setJobs(data);
   };
@@ -69,6 +73,12 @@ function JobContextProvider({ children }) {
     setAllJobs,
     setSkill,
     setTypes2,
+    jobTypeToggle,
+    setJobTypeToggle,
+    recentJob,
+    setRecentJob,
+    results,
+    setResults,
   };
 
   //we wrap the children in the JobContext.Provider and pass the contextValue to the value prop

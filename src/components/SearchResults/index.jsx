@@ -5,19 +5,21 @@ import SkillsItems from '../SkillsItems';
 import JobModal from '../Modal';
 import modalContext from '../../context/modalContext';
 
-function RecentJobs({ toggle }) {
-  const { recentJobs } = useContext(JobContext);
+function SearchResults() {
+
+  const { jobs } = useContext(JobContext);
   const { modal, toggleModal } = useContext(modalContext);
 
   return (
     <>
-      <section className='font-sans items-center justify-center mx-auto overflow-hidden px-2.5 w-full md:max-w-screen-md' >
+      <section className='font-sans items-center justify-center mx-auto overflow-hidden px-2.5 w-full md:max-w-screen-md'>
         <div className='flex flex-row justify-center items-center py-3'>
-          <h3 className='flex justify-start font-bold text-3xl'>Most Recent Jobs</h3>
-          <a className='flex ml-auto font-semibold text-blue-600' href='#' onClick={toggle}>
-            View all jobs &#8594;
+          <h3 className='flex justify-start font-bold text-3xl'>Search Results</h3>
+          <a className='flex ml-auto font-semibold text-blue-600' href='src/components/HomePage'>
+            View most recent jobs &#8594;
           </a>
         </div>
+
         <div>
           <div className='w-full bg-zinc-700'>
             <div>
@@ -28,8 +30,9 @@ function RecentJobs({ toggle }) {
                 <div className='flex justify-start w-[25%]'>Skills</div>
               </div>
             </div>
+
             <div>
-              {recentJobs.map((job) => (
+              {jobs.map((job) => (
                 <JobCard
                   key={job.id}
                   salary={job.salary != null ? job.salary : ' -'}
@@ -46,8 +49,7 @@ function RecentJobs({ toggle }) {
         </div>
       </section>
       {modal && <JobModal toggle={toggleModal} />}
-
     </>
   );
 }
-export default RecentJobs;
+export default SearchResults;

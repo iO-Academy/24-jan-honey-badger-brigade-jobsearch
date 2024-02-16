@@ -1,10 +1,31 @@
 import { useContext, useState } from 'react';
 import { JobContext } from '../../context';
+import NavBarSkillsItems from '../NavBarSkillItems';
 
 function SearchBar({ toggle }) {
   const [searchJob, setSearchJob] = useState('');
 
-  const { setSearch, setJobType, setTypes2, setTypes3, types2, types3, jobType } = useContext(JobContext);
+  const { setSearch, setJobType, setTypes2, setTypes3, types2, types3, jobType, allJobs } = useContext(JobContext);
+
+  //we map through all of the jobs and store the skills in a variable called jobSkills
+  const jobSkills = allJobs.map((job) => job.skills);
+  //we create a new Map called skillsOccurrences
+  const skillsOccurrences = new Map();
+  //we create one large array of all skills and for each skill we create a new object with the id and  name and count the occurances
+  jobSkills.flat().forEach((skill) => {
+    const { id } = skill;
+    if (skillsOccurrences.has(id)) {
+      skillsOccurrences.get(id).count++;
+    } else {
+      skillsOccurrences.set(id, { count: 1, skill });
+    }
+  });
+  //we convert the Map to an array and sort the array by the count in descending order
+  const occurrenceArray = Array.from(skillsOccurrences.values());
+  occurrenceArray.sort((a, b) => b.count - a.count);
+
+  //we store the top 3 skills in a variable called topSkills
+  const topSkills = occurrenceArray.slice(0, 3);
 
   function submitSearch(e) {
     e.preventDefault();
@@ -34,6 +55,7 @@ function SearchBar({ toggle }) {
       setTypes2(null);
     }
   }
+
   return (
     <form onSubmit={submitSearch}>
       <div className="bg-[url('/src/assets/JobSearchHeaderBG.jpg')] bg-cover bg-center">
@@ -65,6 +87,11 @@ function SearchBar({ toggle }) {
 
             <div>
               <p className='text-white text-xs'>Popular skills:</p>
+              <div className='flex gap-2'>
+                {/* <SkillsItems skills={topSkillNames.map((skillName) => ({ skill: skillName }))} /> */}
+                {/* <SkillsItems skills={topSkills} /> */}
+                <NavBarSkillsItems skills={topSkills} />
+              </div>
             </div>
           </div>
 

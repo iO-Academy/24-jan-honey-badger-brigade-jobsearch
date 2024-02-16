@@ -9,20 +9,33 @@ function JobContextProvider({ children }) {
   const [jobType, setJobType] = useState(null); // state to store the job type
   const [skill, setSkill] = useState('0'); // state to store the skill
   const [types2, setTypes2] = useState(null); // state to store the job type
+  const [types3, setTypes3] = useState(null);
   const [jobs, setJobs] = useState([]); // state to store the jobs
   const [allJobs, setAllJobs] = useState([]); // state to store all the jobs
   const [jobTypeToggle, setJobTypeToggle] = useState(false);
   const [results, setResults] = useState(false);
   const [recentJob, setRecentJob] = useState(true);
 
+  useEffect(() => {
+    console.log(jobType, types2, types3);
+    if (jobType && types2 && types3) {
+      fetchAllJobs();
+    }
+    fetchJobs();
+  }, [jobType, types2, types3]);
+
   const fetchJobs = async () => {
     let url = `https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}`;
-    if(jobType != null){
-      url += `&type[]=${jobType}`
+    if (jobType != null) {
+      url += `&type[]=${jobType}`;
     }
-    if(types2 != null){
-      url += `&type[]=${types2}`
+    if (types2 != null) {
+      url += `&type[]=${types2}`;
     }
+    if (types3 != null) {
+      url += `&type[]=${types3}`;
+    }
+
     const res = await fetch(url);
     const data = await res.json();
     setJobs(data);
@@ -32,12 +45,10 @@ function JobContextProvider({ children }) {
     const data = await res.json();
     setAllJobs(data);
   };
-  console.log(search, jobs)
   useEffect(() => {
     fetchJobs();
     fetchAllJobs();
   }, [jobType, search]);
-
 
   //function to get the recent jobs
   const getRecentJobs = async () => {
@@ -86,6 +97,8 @@ function JobContextProvider({ children }) {
     setRecentJob,
     results,
     setResults,
+    types3,
+    setTypes3,
   };
 
   //we wrap the children in the JobContext.Provider and pass the contextValue to the value prop

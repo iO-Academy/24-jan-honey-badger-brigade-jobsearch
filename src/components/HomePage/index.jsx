@@ -6,7 +6,7 @@ import JobTypePage from '../JobTypePage';
 import { JobContext } from '../../context';
 
 function HomePage() {
-  const { setJobTypeToggle, jobTypeToggle, results, setResults, recentJob, setRecentJob, setSearch } = useContext(JobContext);
+  const { jobTypeToggle, results, setResults, setRecentJob } = useContext(JobContext);
 
   function toggleResults() {
     setResults(true);

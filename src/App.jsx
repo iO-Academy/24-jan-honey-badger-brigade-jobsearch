@@ -4,8 +4,8 @@ import RecentJobs from './components/RecentJobs';
 import { JobContextProvider } from './context';
 import modalContext from './context/modalContext';
 import NavMenu from './components/NavMenu';
-import SearchResults from './components/SearchResults';
 import { useState } from 'react';
+import SearchResults from './components/SearchResults';
 
 function App() {
   const [modal, setModal] = useState(false);

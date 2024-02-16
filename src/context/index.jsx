@@ -5,18 +5,54 @@ const JobContext = createContext();
 
 function JobContextProvider({ children }) {
   const [recentJobs, setRecentJobs] = useState([]); // state to store the last 10 jobs
-  const [jobs, setJobs] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(''); // state to store the search query
+  const [jobType, setJobType] = useState(null); // state to store the job type
+  const [skill, setSkill] = useState('0'); // state to store the skill
+  const [types2, setTypes2] = useState(null); // state to store the job type
+  const [types3, setTypes3] = useState(null);
+  const [jobs, setJobs] = useState([]); // state to store the jobs
+  const [allJobs, setAllJobs] = useState([]); // state to store all the jobs
+  const [jobTypeToggle, setJobTypeToggle] = useState(false);
+  const [results, setResults] = useState(false);
+  const [recentJob, setRecentJob] = useState(true);
+  console.log(search);
+  useEffect(() => {
+    console.log(jobType, types2, types3);
+    if (jobType && types2 && types3) {
+      fetchAllJobs();
+    }
+    fetchJobs();
+  }, [jobType, types2, types3, skill]);
 
   const fetchJobs = async () => {
-    const res = await fetch(`https://job-search-api.dev.io-academy.uk/jobs?search=${search}`);
+    let url = `https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}`;
+    if (jobType != null) {
+      url += `&type[]=${jobType}`;
+    }
+    if (types2 != null) {
+      url += `&type[]=${types2}`;
+    }
+    if (types3 != null) {
+      url += `&type[]=${types3}`;
+    }
+
+    const res = await fetch(url);
     const data = await res.json();
     setJobs(data);
   };
-
+  const fetchAllJobs = async () => {
+    const res = await fetch('https://job-search-api.dev.io-academy.uk/jobs');
+    const data = await res.json();
+    setAllJobs(data);
+  };
   useEffect(() => {
     fetchJobs();
-  }, [search]);
+  }, [search, jobType]);
+  useEffect(() => {
+    if (search === '') {
+      fetchAllJobs();
+    }
+  }, []);
 
   //function to get the recent jobs
   const getRecentJobs = async () => {
@@ -51,7 +87,22 @@ function JobContextProvider({ children }) {
     setRecentJobs,
     jobs,
     setJobs,
+    search,
     setSearch,
+    jobType,
+    setJobType,
+    allJobs,
+    setAllJobs,
+    setSkill,
+    setTypes2,
+    jobTypeToggle,
+    setJobTypeToggle,
+    recentJob,
+    setRecentJob,
+    results,
+    setResults,
+    types3,
+    setTypes3,
   };
 
   //we wrap the children in the JobContext.Provider and pass the contextValue to the value prop

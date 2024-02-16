@@ -1,20 +1,21 @@
-import { useContext } from 'react';
-import JobCard from '../JobCard';
+import { useContext, useState } from 'react';
 import { JobContext } from '../../context';
+import JobCard from '../JobCard';
 import SkillsItems from '../SkillsItems';
 import JobModal from '../Modal';
 import modalContext from '../../context/modalContext';
 
-function SearchResults({ toggle }) {
-  const { jobs } = useContext(JobContext);
-  const { modal, toggleModal } = useContext(modalContext);
+const JobTypePage = ({ toggle }) => {
+  const { jobs, allJobs } = useContext(JobContext);
+  const jobList = jobs.length > 0 ? jobs : allJobs;
 
+  const { modal, toggleModal } = useContext(modalContext);
   return (
     <section className='font-sans items-center justify-center mx-auto overflow-hidden px-2.5 w-full md:max-w-screen-md'>
       <div className='flex flex-row justify-center items-center py-3'>
         <h3 className='flex justify-start font-bold text-3xl'>Search Results</h3>
-        <a className='flex ml-auto font-semibold text-blue-600 cursor-pointer' onClick={toggle}>
-          View most recent jobs &#8594;
+        <a className='flex ml-auto font-semibold text-blue-600 cursor-pointer' href='/' onClick={toggle}>
+          View all jobs &#8594;
         </a>
       </div>
 
@@ -30,7 +31,7 @@ function SearchResults({ toggle }) {
           </div>
 
           <div>
-            {jobs.map((job) => (
+            {jobList.map((job) => (
               <JobCard
                 key={job.id}
                 salary={job.salary != null ? job.salary : ' -'}
@@ -47,7 +48,7 @@ function SearchResults({ toggle }) {
       </div>
       {modal && <JobModal toggle={toggleModal} />}
     </section>
-
   );
-}
-export default SearchResults;
+};
+
+export default JobTypePage;

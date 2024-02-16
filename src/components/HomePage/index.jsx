@@ -2,6 +2,7 @@ import { useState } from 'react';
 import RecentJobs from '../RecentJobs';
 import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
+import SkillBoxes from '../SkillBoxes';
 
 function HomePage() {
   const [results, setResults] = useState(false);
@@ -26,7 +27,7 @@ function HomePage() {
     <>
       <SearchBar toggle={toggleResults} />
       {results ? <SearchResults toggle={toggleReset} /> : <RecentJobs toggle={toggleRecents} />}
-      {/* <BrowseSkills /> */}
+      <SkillBoxes />
       {/* <RecentCompanies /> */}
     </>
   );

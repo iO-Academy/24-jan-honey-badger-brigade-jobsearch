@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import JobCard from '../JobCard';
 import { JobContext } from '../../context';
 import SkillsItems from '../SkillsItems';
@@ -11,7 +11,7 @@ function RecentJobs({ toggle }) {
 
   return (
     <>
-      <section className='font-sans items-center justify-center mx-auto overflow-hidden px-2.5 w-full md:max-w-screen-md' >
+      <section className='font-sans items-center justify-center mx-auto overflow-hidden px-2.5 w-full md:max-w-screen-md'>
         <div className='flex flex-row justify-center items-center py-3'>
           <h3 className='flex justify-start font-bold text-3xl'>Most Recent Jobs</h3>
           <a className='flex ml-auto font-semibold text-blue-600' href='#' onClick={toggle}>
@@ -30,7 +30,8 @@ function RecentJobs({ toggle }) {
             </div>
             <div>
               {recentJobs.map((job) => (
-                <JobCard className="cursor-pointer"
+                <JobCard
+                  className='cursor-pointer'
                   key={job.id}
                   salary={job.salary != null ? job.salary : ' -'}
                   type={job.type != null ? job.type : 'N/A'}
@@ -46,7 +47,6 @@ function RecentJobs({ toggle }) {
         </div>
       </section>
       {modal && <JobModal toggle={toggleModal} />}
-
     </>
   );
 }

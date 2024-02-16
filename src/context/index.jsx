@@ -15,14 +15,14 @@ function JobContextProvider({ children }) {
   const [jobTypeToggle, setJobTypeToggle] = useState(false);
   const [results, setResults] = useState(false);
   const [recentJob, setRecentJob] = useState(true);
-
+  console.log(search);
   useEffect(() => {
     console.log(jobType, types2, types3);
     if (jobType && types2 && types3) {
       fetchAllJobs();
     }
     fetchJobs();
-  }, [jobType, types2, types3]);
+  }, [jobType, types2, types3, skill]);
 
   const fetchJobs = async () => {
     let url = `https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}`;
@@ -47,8 +47,12 @@ function JobContextProvider({ children }) {
   };
   useEffect(() => {
     fetchJobs();
-    fetchAllJobs();
-  }, [jobType, search]);
+  }, [search, jobType]);
+  useEffect(() => {
+    if (search === '') {
+      fetchAllJobs();
+    }
+  }, []);
 
   //function to get the recent jobs
   const getRecentJobs = async () => {

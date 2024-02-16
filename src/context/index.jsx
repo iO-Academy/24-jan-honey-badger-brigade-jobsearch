@@ -16,27 +16,24 @@ function JobContextProvider({ children }) {
   const [results, setResults] = useState(false);
   const [recentJob, setRecentJob] = useState(true);
 
-
   useEffect(() => {
-    console.log(types2, jobType, types3)
+    console.log(jobType, types2, types3);
     if (jobType && types2 && types3) {
-      setJobType(null)
-      setTypes2(null);
-      setTypes3(null);
+      fetchAllJobs();
     }
-  }, [jobType, types2, types3])
-
+    fetchJobs();
+  }, [jobType, types2, types3]);
 
   const fetchJobs = async () => {
     let url = `https://job-search-api.dev.io-academy.uk/jobs?search=${search}&skill=${skill}`;
     if (jobType != null) {
-      url += `&type[]=${jobType}`
+      url += `&type[]=${jobType}`;
     }
     if (types2 != null) {
-      url += `&type[]=${types2}`
+      url += `&type[]=${types2}`;
     }
     if (types3 != null) {
-      url += `&type[]=${types3}`
+      url += `&type[]=${types3}`;
     }
 
     const res = await fetch(url);
@@ -52,7 +49,6 @@ function JobContextProvider({ children }) {
     fetchJobs();
     fetchAllJobs();
   }, [jobType, search]);
-
 
   //function to get the recent jobs
   const getRecentJobs = async () => {
@@ -102,7 +98,7 @@ function JobContextProvider({ children }) {
     results,
     setResults,
     types3,
-    setTypes3
+    setTypes3,
   };
 
   //we wrap the children in the JobContext.Provider and pass the contextValue to the value prop

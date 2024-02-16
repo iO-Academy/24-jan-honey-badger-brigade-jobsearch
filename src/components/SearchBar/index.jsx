@@ -4,45 +4,42 @@ import { JobContext } from '../../context';
 function SearchBar({ toggle }) {
   const [searchJob, setSearchJob] = useState('');
 
-  const { setSearch, setJobType, jobType, types2, setTypes2, types3, setTypes3 } = useContext(JobContext);
+  const { setSearch, setJobType, setTypes2, setTypes3, types2, types3, jobType } = useContext(JobContext);
 
   function submitSearch(e) {
     e.preventDefault();
     setSearch(searchJob);
   }
 
-  function handleFullTimeClick(type) {
-    if (jobType == null) {
-      setJobType(type)
-    } else {
-      setJobType(null)
-    }
-
-  }
-  function handlePartTimeClick(type) {
-    if (types2 == null) {
-      setTypes2(type)
-    } else {
-      setTypes2(null)
+  function handleFullTimeClick() {
+    setJobType((prevJobType) => (prevJobType === 'Full time' ? null : 'Full time'));
+    if (types2 && types3) {
+      setTypes2(null);
+      setTypes3(null);
     }
   }
 
-  function handleContractClick(type) {
-    if (types3 == null) {
-      setTypes3(type)
-    } else {
-      setTypes3(null)
+  function handlePartTimeClick() {
+    setTypes2((prevTypes2) => (prevTypes2 === 'Part time' ? null : 'Part time'));
+    if (jobType && types3) {
+      setJobType(null);
+      setTypes3(null);
     }
   }
 
+  function handleContractClick() {
+    setTypes3((prevTypes3) => (prevTypes3 === 'Contract' ? null : 'Contract'));
+    if (jobType && types2) {
+      setJobType(null);
+      setTypes2(null);
+    }
+  }
   return (
-
     <form onSubmit={submitSearch}>
       <div className="bg-[url('/src/assets/JobSearchHeaderBG.jpg')] bg-cover bg-center">
-        <div className="flex flex-col gap-3 px-2.5 md:py-20 py-10 mx-auto w-full md:max-w-screen-md">
+        <div className='flex flex-col gap-3 px-2.5 md:py-20 py-10 mx-auto w-full md:max-w-screen-md'>
           <h1 className='text-white text-5xl pb-5'>Find your perfect job</h1>
-          <input className="rounded p-2 px-2.5 mx-auto w-full md:max-w-screen-md" onChange={e => setSearchJob(e.target.value)} type="text" id="search" placeholder="developer" />
-
+          <input className='rounded p-2 px-2.5 mx-auto w-full md:max-w-screen-md' onChange={(e) => setSearchJob(e.target.value)} type='text' id='search' placeholder='developer' />
 
           <div className='flex justify-between items-center'>
             <div className='flex gap-3'>
@@ -76,8 +73,7 @@ function SearchBar({ toggle }) {
           </div>
         </div>
       </div>
-
-    </form >
+    </form>
   );
 }
 
